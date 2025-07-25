@@ -1,1 +1,15 @@
 @import "tailwindcss";
+
+@theme {
+    --color-primary: #D92C54;
+    --color-secondary: #DDDEAB;
+    --color-dark: #932F67;
+    --color-light: #8ABB6C;
+
+    --font-AlbertSans: "Albert-Sans";
+}
+
+@font-face {
+    font-family: Albert-Sans;
+    src: url('./assets/fonts/AlbertSans-Regular.ttf');
+}
