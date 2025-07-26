@@ -3,9 +3,9 @@ const TextLogo = ({ fontSize } : { fontSize: string }) => {
 
     return (
         <>
-            <h1 className={`text-${fontSize} text-white`}>
+            <h1 className={`text-white`} style={{fontSize: `${fontSize}`}}>
                 Quick
-                <span className="font-bold text-light">Fold.</span>
+                <span className="font-bold text-lime">Fold.</span>
             </h1>       
         </>
     );

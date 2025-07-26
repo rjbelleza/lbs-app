@@ -2,10 +2,10 @@
 const IconLogo = ({ height } : { height: string }) => {
 
     return (
-         <img 
-            src="../../src/assets/icons/logo.png" 
-            alt="Logo" 
-            className={`h-${height}`}
+        <img 
+            src="../../src/assets/icons/logo.png"
+            alt="QuickFold logo"
+            style={{ height: `${height}` }}
         />
     );
 }
