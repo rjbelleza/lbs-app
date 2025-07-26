@@ -1,20 +1,20 @@
-import type { NavigatorProps } from "../types/navigators";
+import type { NavigatorProps } from "../types";
 
 export const mainNavs: NavigatorProps[] = [
     {
-        name: 'Home', 
+        label: 'Home', 
         path: '/home'
     },
     {
-        name: 'About Us', 
+        label: 'About Us', 
         path: '/about'
     },
     {
-        name: 'Services', 
+        label: 'Services', 
         path: '/services'
     },
     {
-        name: 'Contact', 
+        label: 'Contact', 
         path: '/contact'
     }
 ];

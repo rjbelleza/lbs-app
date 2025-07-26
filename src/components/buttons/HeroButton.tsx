@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import type { NavigatorProps } from "../../types/navigators";
+import type { NavigatorProps } from "../../types";
 
 const HeroButton = ({ 
-    name, 
+    label, 
     variant = "solid",
     path
 } : NavigatorProps ) => {
@@ -17,7 +17,7 @@ const HeroButton = ({
     return (
         <Link to={path} 
             className={styles[variant]}>
-            {name}
+            {label}
         </Link>
     );
 }

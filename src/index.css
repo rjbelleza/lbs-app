@@ -20,9 +20,21 @@
     --color-lime: #8ABB6C;
 
     --font-AlbertSans: "Albert-Sans";
+    --font-Allura: 'Allura';
+    --font-Alkatra: 'Alkatra';
 }
 
 @font-face {
     font-family: Albert-Sans;
     src: url('./assets/fonts/AlbertSans-Regular.ttf');
+}
+
+@font-face {
+    font-family: Allura;
+    src: url('./assets/fonts/Allura-Regular.ttf');
+}
+
+@font-face {
+    font-family: Alkatra;
+    src: url('./assets/fonts/Alkatra-Regular.ttf');
 }

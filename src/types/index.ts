@@ -1,6 +1,6 @@
 
 export interface NavigatorProps {
-    name: string;
+    label: string;
     path: string;
     variant?: "solid" | "transparent";
 }
