@@ -1,5 +1,17 @@
 @import "tailwindcss";
 
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #932F67;
+}
+
+::-webkit-scrollbar-track {
+    background-color: rgb(202, 202, 202);
+}
+
 @theme {
     --color-primary: #D92C54;
     --color-secondary: #DDDEAB;
