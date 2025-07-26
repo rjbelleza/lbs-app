@@ -15,8 +15,7 @@ const HeroButton = ({
     };
 
     return (
-        <Link to={path} 
-            className={styles[variant]}>
+        <Link to={path} className={styles[variant]}>
             {label}
         </Link>
     );
