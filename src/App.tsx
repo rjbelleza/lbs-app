@@ -1,12 +1,11 @@
+import AppRouter from "./routes"
 
 function App() {
 
   return (
-    <>
-      <div className='h-10 w-10 bg-blue-500'>
-
-      </div>
-    </>
+    <div className="App">
+      <AppRouter />
+    </div>
   )
 }
 
