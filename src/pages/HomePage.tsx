@@ -1,5 +1,6 @@
 import Tagline from "../components/typographies/Tagline";
 import BookNowBtn from "../components/buttons/HeroButton";
+import HomePageRating from "../components/ratings/HomePageRating";
 
 const HomePage = () => {
 
@@ -10,6 +11,7 @@ const HomePage = () => {
                 <BookNowBtn label="Book Now" variant="solid" path="/" />
                 <BookNowBtn label="How It Works" variant="transparent" path="/" />
             </div>
+            <HomePageRating />
         </div>
     )
 }
