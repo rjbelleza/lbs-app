@@ -1,4 +1,5 @@
-import React from "react";
+import React, { createContext } from "react";
+import type { ReactNode } from "react";
 export interface NavigatorProps {
     label: string;
     path: string;
@@ -23,4 +24,22 @@ export interface InputFieldProps {
     value: string | number;
     placeholder: string;
     callback: InputChangeHandler;
+}
+
+export interface User {
+    id: string;
+    email: string;
+}
+
+export interface AuthContextType {
+    user: User | null;
+    token: string | null;
+    isLoggedIn: boolean;
+    login: (token: string, user: User) => void;
+    logout: () => void;
+    isLoadingAuth: boolean;
+}
+
+export interface AuthProviderProps {
+    children: ReactNode;
 }
