@@ -1,5 +1,6 @@
-import React, { useState, useEffect, useContext, createContext } from "react";
+import React, { useState, useEffect, useContext, createContext, useCallback } from "react";
 import type { AuthContextType, AuthProviderProps, User } from "../types";
+import localforage from "localforage";
 import backendApi from "../api/backendApi";
 
 
@@ -13,50 +14,68 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     const [isLoadingAuth, setIsLoadingAuth] = useState(true);
 
 
-    // Check token in localStorage on initial load
-    useEffect(() => {
-        const storedToken = localStorage.getItem('authToken');
-        const storedUser = localStorage.getItem('user');
+    // Set/clear auth data in state and storage
+    const setAuthData = useCallback(async (newToken: string | null, newUser: User | null) => {
+        if (newToken && newUser) {
+            await localforage.setItem('authToken', newToken);
+            await localforage.setItem('user', JSON.stringify(newUser));
 
-        if (storedToken && storedUser) {
-            try {
-                const parsedUser: User = JSON.parse(storedUser);
-                setToken(storedToken);
-                setUser(parsedUser);
-                setIsLoggedIn(true);
+            setUser(newUser);
+            setToken(newToken);
+            setIsLoggedIn(true);
 
-                backendApi.defaults.headers.common['Authorization'] = `Bearer ${storedToken}`;
-            } catch (error) {
-                console.error("Failed to parse stored user data: ", error);
-                logout();
-            }
+            backendApi.defaults.headers.common['Authorization'] = `Bearer ${newToken}`;
+        } else {
+            await localforage.removeItem('authToken');
+            await localforage.removeItem('user');
+
+            setUser(null);
+            setToken(null);
+            setIsLoggedIn(false);
+
+            delete backendApi.defaults.headers.common['Authorization'];
         }
-        setIsLoadingAuth(false);
     }, []);
 
 
-    const login = (newToken: string, newUser: User) => {
-        setToken(newToken);
-        setUser(newUser);
-        setIsLoggedIn(true);
+    // Load auth data from storage on initiall app load
+    useEffect(() => {
+        const loadAuthData = async () => {
+            try {
+                const storedToken = await localforage.getItem<string>('authToken');
+                const storedUserJson = await localforage.getItem<string>('user');
 
-        localStorage.setItem('authToken', newToken);
-        localStorage.setItem('user', JSON.stringify(newUser));
+                if (storedToken && storedUserJson) {
+                    try {
+                        const parsedUser: User = JSON.parse(storedUserJson);
+                        await setAuthData(storedToken, parsedUser);
+                    } catch (error) {
+                        console.error("Failed to parse stored user data: ", error);
+                        await setAuthData(null, null);
+                    }
+                } else {
+                    await setAuthData(null, null);
+                }
+            } catch (error) {
+                console.error("Error loading auth data from storage: ", error);
+                await setAuthData(null, null);
+            } finally {
+                setIsLoadingAuth(false);
+            }
+        };
 
-        backendApi.defaults.headers.common['Authorization'] = `Bearer ${newToken}`;
-    };
+        loadAuthData();
+    }, [setAuthData]);
 
 
-    const logout = () => {
-        setToken(null);
-        setUser(null);
-        setIsLoggedIn(false);
+    const login = useCallback(async (newToken: string, newUser: User) => {
+        await setAuthData(newToken, newUser);
+    }, [setAuthData]);
 
-        localStorage.removeItem('authToken');
-        localStorage.removeItem('user');
 
-        delete backendApi.defaults.headers.common['Authorization'];
-    };
+    const logout = useCallback(async () => {
+        await setAuthData(null, null);
+    }, [setAuthData]);
 
 
     const value = {
