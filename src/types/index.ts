@@ -28,6 +28,7 @@ export interface InputFieldProps {
 export interface User {
     id: string;
     email: string;
+    role: "admin" | "customer" | "courier";
 }
 
 export interface AuthContextType {
