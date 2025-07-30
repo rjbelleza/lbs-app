@@ -1,5 +1,5 @@
 import React from "react";
-import { useRouteLoaderData } from "react-router-dom";
+import { useRouteLoaderData, Outlet } from "react-router-dom";
 import type { AdminLoaderData } from "../types";
 
 
@@ -9,7 +9,7 @@ const AdminLayout: React.FC = () => {
     return (
         <div>
             {user ? (
-                <h5>Hello! You have access to the admin functionality.</h5>
+                <Outlet />
             ) : (
                 <h5>Access Denied. User data not found</h5>
             )}

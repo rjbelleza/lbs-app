@@ -1,4 +1,4 @@
-import { StarRating } from "../../utils/userRatings";
+import { StarRating } from "./UserRating";
 
 const HomePageRating = () => {
 

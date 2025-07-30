@@ -1,4 +1,5 @@
-import type { RatingProps } from "../types";
+import type { RatingProps } from "../../types";
+
 
 const StarType = ({ starType } : { starType: 'rated' | 'unrated' }) => {
     

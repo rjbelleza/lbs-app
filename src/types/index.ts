@@ -22,6 +22,7 @@ export interface InputFieldProps {
     name: string;
     value: string | number;
     placeholder: string;
+    id: string;
     callback: InputChangeHandler;
 }
 

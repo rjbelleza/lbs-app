@@ -1,7 +1,7 @@
 import { lazy, Suspense } from "react";
 import { createBrowserRouter } from "react-router-dom";
 import { RouterProvider } from "react-router-dom";
-import { adminLoader, privatePagesLoader } from "../utils/helpers";
+import { adminLoader, privatePagesLoader } from "../utils/loaders";
 import AdminLayout from "../layouts/AdminLayout";
 
 const PageLoading = lazy(() => import('../components/loaders/PageLoading'));
@@ -9,6 +9,7 @@ const PageLoading = lazy(() => import('../components/loaders/PageLoading'));
 const HomePage = lazy(() => import('../pages/HomePage'));
 const LoginPage = lazy(() => import('../pages/LoginPage'));
 const NotFoundPage = lazy(() => import('../pages/NotFoundPage'));
+const AdminDashboard = lazy(() => import('../pages/admin/AdminDashboard'));
 
 const PublicLayout = lazy(() => import('../layouts/PublicLayout'));
 const PrivateLayout = lazy(() => import('../layouts/PrivateLayout'));
@@ -42,6 +43,12 @@ const router = createBrowserRouter([
                 Component: AdminLayout,
                 loader: adminLoader,
                 id: 'admin',
+                children: [
+                    {
+                        index: true,
+                        Component: () => <Suspense fallback={<PageLoading />}><AdminDashboard /></Suspense>
+                    }
+                ]
             }
         ]
     }

@@ -4,6 +4,7 @@ const InputField = ({
     name,
     value,
     placeholder,
+    id,
     callback,
 } : InputFieldProps ) => {
 
@@ -11,6 +12,7 @@ const InputField = ({
 
     return (
         <input 
+            id={id}
             name={name}
             value={value}
             onChange={callback}

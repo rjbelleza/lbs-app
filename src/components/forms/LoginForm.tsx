@@ -17,6 +17,7 @@ const LoginForm = () => {
             <div className="flex flex-col py-5">
                 <InputLabel ref="email" label="Email" fontSize="sm" />
                 <InputField 
+                    id="email"
                     name="email"
                     callback={call} 
                     value={val}
@@ -24,6 +25,7 @@ const LoginForm = () => {
                 />
                 <InputLabel ref="password" label="Password" fontSize="sm" />
                 <InputField 
+                    id="password"
                     name="password"
                     callback={call}
                     value={val} 
