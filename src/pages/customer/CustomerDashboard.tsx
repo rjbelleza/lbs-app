@@ -2,7 +2,7 @@
 const CustomerDashboard = () => {
     
     return (
-        <h1>Welcome customer!</h1>
+        <h1>Welcome to Customer dashboard!</h1>
     );
 }
 

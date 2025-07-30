@@ -2,7 +2,7 @@
 const CourierDashboard = () => {
 
     return (
-        <h1>Welcome Courier!</h1>
+        <h1>Welcome to Courier dashboard!</h1>
     );
 }
 

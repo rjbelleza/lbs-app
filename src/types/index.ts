@@ -48,3 +48,11 @@ export interface LoginResponse {
     token: string;
     user: User;
 }
+
+export interface PrivatePagesLoaderData {
+    user: User | null;
+}
+
+export interface AdminLoaderData {
+    user: User | null;
+}
