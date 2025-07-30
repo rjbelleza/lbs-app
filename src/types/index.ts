@@ -16,14 +16,19 @@ export interface LabelProps {
     fontSize: "sm" | "md" | "xl" | "xxl"
 }
 
+export interface SubmitButtonProps {
+    type: "submit" | "reset" | "button";
+    label: string;
+    disabled: boolean;
+}
+
 export type InputChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => void;
 
 export interface InputFieldProps {
     name: string;
-    value: string | number;
     placeholder: string;
     id: string;
-    callback: InputChangeHandler;
+    required: boolean;
 }
 
 export interface User {

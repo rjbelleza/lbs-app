@@ -2,7 +2,7 @@ import { lazy, Suspense } from "react";
 import { createBrowserRouter } from "react-router-dom";
 import { RouterProvider } from "react-router-dom";
 import { adminLoader, privatePagesLoader } from "../utils/loaders";
-import AdminLayout from "../layouts/AdminLayout";
+import { loginAction } from "../utils/actions";
 
 const PageLoading = lazy(() => import('../components/loaders/PageLoading'));
 
@@ -13,6 +13,7 @@ const AdminDashboard = lazy(() => import('../pages/admin/AdminDashboard'));
 
 const PublicLayout = lazy(() => import('../layouts/PublicLayout'));
 const PrivateLayout = lazy(() => import('../layouts/PrivateLayout'));
+const AdminLayout = lazy(() => import('../layouts/AdminLayout'));
 
 
 const router = createBrowserRouter([
@@ -29,8 +30,8 @@ const router = createBrowserRouter([
     },
     {
         path: '/login',
-        element: <LoginPage />,
-        errorElement: <Suspense fallback={<PageLoading />}><NotFoundPage /></Suspense>
+        Component: LoginPage,
+        action: loginAction,
     },
     {
         path: '/user',
