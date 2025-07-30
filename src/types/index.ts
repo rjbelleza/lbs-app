@@ -43,3 +43,8 @@ export interface AuthContextType {
 export interface AuthProviderProps {
     children: ReactNode;
 }
+
+export interface LoginResponse {
+    token: string;
+    user: User;
+}
