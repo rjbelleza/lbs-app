@@ -4,7 +4,8 @@ const InputField = ({
     name,
     placeholder,
     id,
-    required
+    required,
+    type
 } : InputFieldProps ) => {
 
     
@@ -13,6 +14,7 @@ const InputField = ({
         <input 
             id={id}
             name={name}
+            type={type}
             className="border-b bg-secondary border-light w-[90%] px-3 py-2 mt-1 mb-5 focus:border-dark focus:outline-none font-AlbertSans mx-auto"
             placeholder={placeholder}
             required={required}

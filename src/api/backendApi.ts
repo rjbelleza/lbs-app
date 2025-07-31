@@ -2,7 +2,7 @@ import axios from "axios";
 import localforage from "localforage";
 
 
-const API_BASE_URL = import.meta.env.REACT_APP_API_BASE_URL
+const API_BASE_URL = import.meta.env.VITE_APP_API_BASE_URL
 
 // Primary backend api
 const backendApi = axios.create({

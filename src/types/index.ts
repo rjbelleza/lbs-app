@@ -27,6 +27,7 @@ export type InputChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) =>
 export interface InputFieldProps {
     name: string;
     placeholder: string;
+    type: string;
     id: string;
     required: boolean;
 }
@@ -60,5 +61,13 @@ export interface PrivatePagesLoaderData {
 }
 
 export interface AdminLoaderData {
+    user: User | null;
+}
+
+export interface CustomerLoaderData {
+    user: User | null;
+}
+
+export interface CourierLoaderData {
     user: User | null;
 }

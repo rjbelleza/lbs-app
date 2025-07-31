@@ -20,15 +20,15 @@ const LoginForm = () => {
         if (actionData?.success && actionData.token && actionData.user) {
             console.log("LoginPage: Login successful, updating AuthContext and redirecting.")
             login(actionData.token, actionData.user);
-            navigate('/', { replace: true });
+            navigate('/user', { replace: true });
         }
     }, [actionData, login, navigate]);
 
 
     useEffect(() => {
         if (isLoggedIn) {
-            console.log("LoginPage: Already logged in, redirecting to /.");
-            navigate('/', { replace: true });
+            console.log("LoginPage: Already logged in, redirecting to /user.");
+            navigate('/user//', { replace: true });
         }
     }, [isLoggedIn, navigate]);
     
@@ -42,6 +42,7 @@ const LoginForm = () => {
                     <InputField 
                         id="email"
                         name="email"
+                        type="email"
                         placeholder="Input your email here" 
                         required={true}
                     />
@@ -49,6 +50,7 @@ const LoginForm = () => {
                     <InputField 
                         id="password"
                         name="password"
+                        type="password"
                         placeholder="Input your password here" 
                         required={true}
                     />

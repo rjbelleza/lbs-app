@@ -40,6 +40,7 @@ export const loginUser = async (
     }): Promise<LoginResponse> => {
         console.log("API: Attempting login for: ", credentials.email);
         const response = await backendApi.post<LoginResponse>('/login', credentials);
+        console.log(response);
 
         return response.data;
 };
