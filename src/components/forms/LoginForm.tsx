@@ -54,7 +54,11 @@ const LoginForm = () => {
                         placeholder="Input your password here" 
                         required={true}
                     />
-                    <FormButton label="Login" type="submit" disabled={isSubmitting} />
+                    <FormButton 
+                        label="Login" 
+                        type="submit" 
+                        disabled={isSubmitting} 
+                    />
                     <p className="text-center text-dark my-3">or</p>
                     <div className="flex justify-center w-full mb-7">
                         <GoogleAuthButton />

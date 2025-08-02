@@ -6,9 +6,13 @@ const FormButton = ({ type, label, disabled } : SubmitButtonProps) => {
         <button
             type={type}
             disabled={disabled}
-            className="bg-dark text-white max-w-[90%] min-w-[90%] mx-auto py-2 cursor-pointer rounded font-AlbertSans hover:bg-light transition-all"
+            className="bg-dark text-white max-w-[90%] min-w-[90%] mx-auto py-2 cursor-pointer rounded font-AlbertSans hover:bg-light transition-all disabled:bg-gray-500"
         >
-            {label}
+            {disabled ? (
+                "Logging in..."
+            ) : (
+                label
+            )}
         </button>
     );
 }

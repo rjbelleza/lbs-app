@@ -28,7 +28,7 @@ export const adminLoader = async (): Promise<AdminLoaderData | Response> => {
 
     if (user.role !== 'admin') {
         console.log("Admin Loader: User is not an admin, redirecting to /");
-        return redirect('/');
+        return redirect('/login');
     }
 
     console.log("Admin Loader: User is an admin: ", user.email);
@@ -47,7 +47,7 @@ export const customerLoader = async (): Promise<CustomerLoaderData | Response> =
 
     if (user.role !== 'customer') {
         console.log("Admin Loader: User is not an admin, redirecting to /");
-        return redirect('/');
+        return redirect('/login');
     }
 
     console.log("Admin Loader: User is a customer: ", user.email);
