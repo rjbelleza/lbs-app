@@ -40,7 +40,6 @@ export const loginUser = async (
     }): Promise<LoginResponse> => {
         console.log("API: Attempting login for: ", credentials.email);
         const response = await backendApi.post<LoginResponse>('/login', credentials);
-        console.log(response);
 
         return response.data;
 };
@@ -55,4 +54,12 @@ export const verifyToken = async (token: string): Promise<User> => {
         }
     });
     return response.data;
+};
+
+
+export const clearAuthStatus = async () => {
+    delete backendApi.defaults.headers.common['Authorization'];
+
+    await localforage.removeItem('authToken');
+    await localforage.removeItem('user');
 };

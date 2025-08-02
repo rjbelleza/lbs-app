@@ -1,6 +1,7 @@
 import React from "react";
-import { useRouteLoaderData, Outlet } from "react-router-dom";
+import { useRouteLoaderData, Outlet, Form } from "react-router-dom";
 import type { CustomerLoaderData } from "../types";
+import LogoutButton from "../components/buttons/LogoutButton";
 
 
 const CustomerLayout: React.FC = () => {
@@ -8,6 +9,9 @@ const CustomerLayout: React.FC = () => {
 
     return (
         <div>
+            <Form action="/logout" method="post">
+                <LogoutButton />
+            </Form>
             {user ? (
                 <Outlet />
             ) : (

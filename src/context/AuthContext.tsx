@@ -64,7 +64,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
             }
         };
 
-        loadAuthData();
+        loadAuthData(); 
     }, [setAuthData]);
 
 
@@ -74,6 +74,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
 
     const logout = useCallback(async () => {
+        console.log("AuthContext: Performing client-side logout due to interceptor call.");
         await setAuthData(null, null);
     }, [setAuthData]);
 

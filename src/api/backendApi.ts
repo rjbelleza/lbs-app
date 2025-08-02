@@ -10,7 +10,6 @@ const backendApi = axios.create({
     timeout: 10000,
     headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${localStorage.getItem('token')}`
     }
 });
 
@@ -41,7 +40,6 @@ backendApi.interceptors.response.use(
             await localforage.removeItem('user');
 
             delete backendApi.defaults.headers.common['Authorization'];
-
             window.location.replace('/login');
         }
         return Promise.reject(error);

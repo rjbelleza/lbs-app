@@ -70,7 +70,7 @@ export const userDispatcherLoader = async () => {
     }
 
     if (user.role === 'customer') {
-        console.log("User Dispatcher Loader: User is admin, redirecting to /user/customer.");
+        console.log("User Dispatcher Loader: User is customer, redirecting to /user/customer.");
         return redirect('/user/customer');
     }
 

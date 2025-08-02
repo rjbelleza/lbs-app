@@ -7,7 +7,7 @@ import {
     privatePagesLoader, 
     userDispatcherLoader 
 } from "../utils/loaders";
-import { loginAction } from "../utils/actions";
+import { loginAction, logoutAction } from "../utils/actions";
 
 const PageLoading = lazy(() => import('../components/loaders/PageLoading'));
 
@@ -41,6 +41,10 @@ const router = createBrowserRouter([
         path: '/login',
         Component: LoginPage,
         action: loginAction,
+    },
+    {
+        path: '/logout',
+        action: logoutAction,
     },
     {
         path: '/user',

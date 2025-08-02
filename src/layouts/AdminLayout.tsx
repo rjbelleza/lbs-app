@@ -1,7 +1,8 @@
 import React, { Suspense } from "react";
-import { useRouteLoaderData, Outlet } from "react-router-dom";
+import { useRouteLoaderData, Outlet, Form } from "react-router-dom";
 import type { AdminLoaderData } from "../types";
 import PageLoading from "../components/loaders/PageLoading";
+import LogoutButton from "../components/buttons/LogoutButton";
 
 
 const AdminLayout: React.FC = () => {
@@ -9,6 +10,9 @@ const AdminLayout: React.FC = () => {
 
     return (
         <div>
+            <Form action="/logout" method="post">
+                <LogoutButton />
+            </Form>
             {user ? (
                 <Suspense fallback={<PageLoading />}>
                     <Outlet />
